@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya BodySculpt YoGa Studio - Transform Your Life</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            display: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9)),
+                        url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1200') center/cover;
+            padding: 30px 20px;
+            text-align: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .hero-logo {
+            animation: fadeInLeft 1s ease-out;
+        }
+        .hero-logo img {
+            height: 200px;
+            width: auto;
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+        }
+        .hero-content {
+            text-align: center;
+            border: 4px solid #FFD700;
+            padding: 25px 40px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: fadeInScale 1s ease-out, borderGlow 2s ease-in-out infinite;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 0;
+            font-weight: 300;
+            margin-top: 0;
+        }
+        
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.5);
+            }
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        .btn-hero {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Quick Links Section */
+        .quick-links {
+            padding: 30px 20px 20px;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #667eea;
+            font-weight: 700;
+        }
+        .links-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .link-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+        .link-card i {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .link-card h3 {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+        .link-card p {
+            font-size: 0.75em;
+            opacity: 0.9;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 20px 20px 30px;
+            background: #f8f9fa;
+        }
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .feature-item i {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .feature-item h3 {
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 1em;
+        }
+        .feature-item p {
+            font-size: 0.85em;
+        }
+        
+        /* Social Links */
+        .social-section {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+        }
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .social-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .social-facebook { background: #1877f2; }
+        .social-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .social-whatsapp { background: #25d366; }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero-logo img {
+                height: 150px;
+            }
+            .hero-content {
+                text-align: center;
+            }
+            .hero h1 { 
+                font-size: 2em;
+                padding: 15px 25px;
+            }
+            .hero p { font-size: 1.1em; }
+            .nav-links { display: none; }
+            .section-title { font-size: 1.8em; }
+            .links-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo">
+                <span>Divya BodySculpt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="trainer.html">Trainer</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-logo">
+            <img src="logo.png" alt="Divya BodySculpt Logo">
+        </div>
+        <div class="hero-content">
+            <h1>Divya BodySculpt YoGa Studio</h1>
+            <p>Awake Your Soul, Sculpt Your Body</p>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <h2 class="section-title">Book Your Session</h2>
+        <div class="links-grid">
+            <a href="one-on-one.html" class="link-card">
+                <i class="fas fa-user"></i>
+                <h3>1:1 Fitness Class</h3>
+                <p>Personalized training tailored to your goals</p>
+            </a>
+            <a href="morning-yoga.html" class="link-card">
+                <i class="fas fa-sun"></i>
+                <h3>Morning Yoga</h3>
+                <p>Start your day with energizing yoga sessions</p>
+            </a>
+            <a href="friday-fitness.html" class="link-card">
+                <i class="fas fa-calendar-week"></i>
+                <h3>Friday Fitness</h3>
+                <p>Special weekend fitness classes</p>
+            </a>
+            <a href="classes.html" class="link-card">
+                <i class="fas fa-om"></i>
+                <h3>Meditation Classes</h3>
+                <p>Find inner peace and mental clarity</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-certificate"></i>
+                <h3>Certified Trainer</h3>
+                <p>Expert guidance from certified professionals</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-users"></i>
+                <h3>Small Groups</h3>
+                <p>Personalized attention in every class</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <h3>Flexible Timing</h3>
+                <p>Classes that fit your schedule</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-heart"></i>
+                <h3>Holistic Approach</h3>
+                <p>Mind, body, and soul transformation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Divya BodySculpt YoGa Studio !!!</p>
+    </footer>
+</body>
+</html>

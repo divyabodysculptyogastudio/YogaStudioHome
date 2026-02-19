@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Divya BodySculpt YoGa Studio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo { display: none; }
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo img { height: 50px; }
+        .nav-logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .social-connect {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .social-connect h2 {
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .social-connect p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            min-width: 200px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .social-card i {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+        
+        .social-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .social-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .facebook-card i { color: #1877f2; }
+        .instagram-card i { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .youtube-card i { color: #FF0000; }
+        
+        .gallery-section {
+            margin-top: 50px;
+        }
+        
+        .section-title {
+            font-size: 2.5em;
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+        }
+        
+        .gallery-info {
+            padding: 20px;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .gallery-info p {
+            color: #666;
+            font-size: 0.95em;
+        }
+        
+        .video-section {
+            margin-top: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .video-grid {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .video-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+        
+        .video-placeholder video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .cta-section {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .cta-btn {
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2em; }
+            .social-connect { padding: 30px 20px; }
+            .video-section { padding: 30px 20px; }
+            .cta-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo">
+                <span>Divya BodySculpt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="trainer.html">Trainer</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Gallery & Social Media</h1>
+        <p>See our community in action and connect with us</p>
+    </div>
+
+    <div class="container">
+        <!-- Social Media Section -->
+        <div class="social-connect">
+            <h2>Follow Our Journey</h2>
+            <p>Stay updated with daily tips, class schedules, and transformation stories</p>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/share/16yuSkvKuA/" target="_blank" class="social-card facebook-card">
+                    <i class="fab fa-facebook"></i>
+                    <h3>Facebook</h3>
+                    <p>Daily updates & community</p>
+                </a>
+                <a href="https://www.instagram.com/divya_bodysculpt_yoga_studio?igsh=MXNjY3MxZjJzMWNoZw==" target="_blank" class="social-card instagram-card">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <p>Photos & stories</p>
+                </a>
+                <a href="https://www.youtube.com/@urtheshakthi" target="_blank" class="social-card youtube-card">
+                    <i class="fab fa-youtube"></i>
+                    <h3>YouTube</h3>
+                    <p>Video tutorials & classes</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2 class="section-title">Class Videos</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px;">Watch our classes in action and get a feel for our training style</p>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <video controls>
+                            <source src="videos/video1.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h3>Fitness Friday Fun</h3>
+                        <p>Learn basic yoga poses and breathing techniques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Start your transformation journey today!</p>
+            <a href="classes.html" class="cta-btn">Book Your First Class</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Divya BodySculpt YoGa Studio !!!</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Friday Fitness Class - Divya BodySculpt YoGa Studio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo img { height: 50px; }
+        .nav-logo span {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        .nav-links a:hover { background: rgba(255,255,255,0.2); }
+        
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+        .page-header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+        .page-header p {
+            font-size: 1.3em;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .class-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .class-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        .class-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        .class-icon {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .class-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .class-info {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #666;
+            font-size: 1em;
+        }
+        .class-info i {
+            color: #667eea;
+            width: 25px;
+            font-size: 1.1em;
+        }
+        .difficulty {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .beginner { background: #e8f5e8; color: #2e7d32; }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            transform: scale(1.05);
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-register:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            z-index: 1000;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .classes-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .page-header h1 { font-size: 2em; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Logo">
+                <span>Divya BodySculpt</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="trainer.html">Trainer</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <h1>Meditation Classes</h1>
+        <p>Find inner peace and mental clarity</p>
+    </div>
+
+    <div class="container">
+        <div class="classes-grid" id="classes-list"></div>
+    </div>
+
+    <footer>
+        <p>Divya BodySculpt YoGa Studio !!!</p>
+    </footer>
+
+
+    <script>
+        const meditationClasses = [
+            {
+                name: 'Morning Meditation',
+                instructor: 'Divya',
+                date: 'Mon-Sat',
+                time: '07:00 - 08:00',
+                capacity: 15,
+                icon: 'fas fa-om'
+            },
+            {
+                name: 'Evening Meditation',
+                instructor: 'Divya',
+                date: 'Mon-Sat',
+                time: '18:00 - 19:00',
+                capacity: 15,
+                icon: 'fas fa-spa'
+            },
+            {
+                name: 'Mindfulness Session',
+                instructor: 'Divya',
+                date: 'Wed & Fri',
+                time: '10:00 - 11:00',
+                capacity: 12,
+                icon: 'fas fa-leaf'
+            },
+            {
+                name: 'Guided Relaxation',
+                instructor: 'Divya',
+                date: 'Tue & Thu',
+                time: '19:00 - 20:00',
+                capacity: 15,
+                icon: 'fas fa-moon'
+            }
+        ];
+
+        function loadClasses() {
+            const classList = document.getElementById('classes-list');
+            classList.innerHTML = meditationClasses.map(cls => `
+                <div class="class-card">
+                    <i class="${cls.icon} class-icon"></i>
+                    <div class="class-title">${cls.name}</div>
+                    <div class="class-info">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Instructor: ${cls.instructor}</span>
+                    </div>
+                    <div class="class-info">
+                        <i class="fas fa-calendar"></i>
+                        <span>${cls.date}</span>
+                    </div>
+                    <div class="class-info">
+                        <i class="fas fa-clock"></i>
+                        <span>${cls.time}</span>
+                    </div>
+                    <div class="class-info">
+                        <i class="fas fa-users"></i>
+                        <span>Max ${cls.capacity} participants</span>
+                    </div>
+                    <span class="difficulty beginner">All Levels</span>
+                    <div class="btn-group">
+                        <a href="https://wa.me/61431955787?text=Hi! I'm interested in ${cls.name} (${cls.date} at ${cls.time})" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="https://forms.gle/Mc75XKWgKcchTasj9" class="btn btn-register" target="_blank">
+                            <i class="fas fa-user-plus"></i>
+                            Book Now
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadClasses);
+    </script>
+</body>
+</html>
