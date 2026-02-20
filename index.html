@@ -527,9 +527,12 @@
     <script>
         // Secure WhatsApp Function - Number is encoded
         function openWhatsApp() {
-            const encoded = 'NjE0MzE5NTU3ODc='; // Replace with your encoded number from encode-whatsapp.html
+            const encoded = 'NjE0NjY4Nzg0OTM='; // Replace with your encoded number
             const number = atob(encoded);
             const message = 'Hi, I want to register for a class at Divya BodySculpt Yoga Studio';
+            
+            // Open WhatsApp with custom business name
+            // Note: Display name/photo is controlled by WhatsApp Business account settings
             window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
         }
         
