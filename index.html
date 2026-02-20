@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/logo.png">
     <title>Divya BodySculpt YoGa Studio - Transform Your Life</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -308,6 +314,96 @@
             text-decoration: none;
             z-index: 1000;
         }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 20px 15px;
+            }
+            .hero-logo img {
+                height: 120px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .hero-content {
+                padding: 20px;
+            }
+            .btn-hero {
+                padding: 12px 30px;
+                font-size: 1em;
+            }
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .link-card {
+                padding: 15px 10px;
+            }
+            .link-card i {
+                font-size: 1.5em;
+            }
+            .link-card h3 {
+                font-size: 0.9em;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .social-links {
+                gap: 20px;
+            }
+            .social-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+            }
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.9em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .btn-hero {
+                width: 100%;
+            }
+            .section-title {
+                font-size: 1.5em;
+            }
+            .floating-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+                bottom: 15px;
+                right: 15px;
+            }
+        }ext-decoration: none;
+            z-index: 1000;
+        }
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -418,9 +514,31 @@
         </div>
     </section>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="#" onclick="openWhatsApp(); return false;" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Footer -->
     <footer>
         <p>Divya BodySculpt YoGa Studio !!!</p>
     </footer>
+    
+    <script>
+        // Secure WhatsApp Function - Number is encoded
+        function openWhatsApp() {
+            const encoded = 'NjE0MzE5NTU3ODc='; // Replace with your encoded number from encode-whatsapp.html
+            const number = atob(encoded);
+            const message = 'Hi, I want to register for a class at Divya BodySculpt Yoga Studio';
+            window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+        
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(() => console.log('PWA ready'))
+                .catch(err => console.log('SW registration failed'));
+        }
+    </script>
 </body>
 </html>
