@@ -316,16 +316,6 @@
                         <h3>Personal Training</h3>
                         <p>Certified Fitness Trainer</p>
                     </div>
-                    <div class="cert-card">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Nutrition Specialist</h3>
-                        <p>Holistic Nutrition Certification</p>
-                    </div>
-                    <div class="cert-card">
-                        <i class="fas fa-spa"></i>
-                        <h3>Pilates Instructor</h3>
-                        <p>Mat Pilates Certification</p>
-                    </div>
                 </div>
             </div>
             
@@ -363,7 +353,7 @@
                 <h3>Ready to Start Your Journey?</h3>
                 <p style="margin-bottom: 25px;">Book a consultation or class with Divya today!</p>
                 <div class="contact-buttons">
-                    <a href="https://wa.me/61431955787?text=Hi Divya! I'd like to book a consultation" class="contact-btn">
+                    <a href="#" onclick="contactTrainer(); return false;" class="contact-btn">
                         <i class="fab fa-whatsapp"></i>
                         WhatsApp
                     </a>
@@ -380,5 +370,13 @@
         <p>Divya BodySculpt YoGa Studio !!!</p>
     </footer>
 
+    <script>
+        function contactTrainer() {
+            const encoded = 'NjE0MzE5NTU3ODc='; // Replace with your encoded number
+            const number = atob(encoded);
+            const message = "Hi Divya! I'd like to book a consultation";
+            window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
 </body>
 </html>
