@@ -316,7 +316,7 @@
         
         // Secure WhatsApp function - opens in new window
         function contactWhatsApp(className, date, time) {
-            const encoded = 'NjE0MzE5NTU3ODc='; // Replace with your encoded number
+            const encoded = 'NjE0NjY4Nzg0OTM='; // Correct encoded number
             const number = atob(encoded);
             const message = `Hi! I'm interested in ${className} (${date} at ${time})`;
             window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
