@@ -107,24 +107,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>📅 Book a Class</h1>
-        <p class="subtitle">Choose your preferred class and time</p>
+        <h1>📅 Registration & Booking</h1>
+        <p class="subtitle">New user? Register first. Existing user? Book a class.</p>
         
         <div class="info-box">
-            <p><strong>📌 Note:</strong> Please use the email address you registered with. If you haven't registered yet, please register first.</p>
+            <p><strong>🆕 New Users:</strong> Click "Register Now" to create your account first.</p>
+            <p style="margin-top: 10px;"><strong>✅ Existing Users:</strong> Click "Book a Class" and use your registered email.</p>
         </div>
         
         <div class="btn-container">
-            <!-- REPLACE WITH YOUR ACTUAL GOOGLE FORM URLS -->
-            <a href="https://forms.gle/Mc75XKWgKcchTasj9" class="btn btn-primary" target="_blank">
-                <i class="fas fa-calendar-check"></i> Book a Class
+            <!-- STEP 1: REGISTRATION (One-Time) -->
+            <a href="register.html" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Register Now (New Users)
             </a>
             
-            <div class="divider">OR</div>
+            <div class="divider">THEN</div>
             
-            <!-- If you have a registration form, add it here. Otherwise remove this button -->
-            <a href="https://forms.gle/Mc75XKWgKcchTasj9" class="btn btn-secondary" target="_blank">
-                <i class="fas fa-user-plus"></i> Register / Book Now
+            <!-- STEP 2: BOOKING (Multiple Times) -->
+            <a href="booking.html" class="btn btn-primary">
+                <i class="fas fa-calendar-check"></i> Book a Class (Existing Users)
             </a>
             
             <a href="index.html" class="btn btn-secondary">
