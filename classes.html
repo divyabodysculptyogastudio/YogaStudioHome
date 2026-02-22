@@ -298,10 +298,10 @@
                     </div>
                     <span class="difficulty beginner">All Levels</span>
                     <div class="btn-group">
-                        <a href="https://wa.me/61466878493?text=Hi! I'm interested in ${cls.name} (${cls.date} at ${cls.time})" class="btn btn-whatsapp" target="_blank">
+                        <button onclick="contactWhatsApp('${cls.name}', '${cls.date}', '${cls.time}')" class="btn btn-whatsapp">
                             <i class="fab fa-whatsapp"></i>
                             WhatsApp
-                        </a>
+                        </button>
                         <a href="https://forms.gle/Mc75XKWgKcchTasj9" class="btn btn-register" target="_blank">
                             <i class="fas fa-user-plus"></i>
                             Book Now
@@ -312,6 +312,14 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadClasses);
+        
+        // Secure WhatsApp function - opens in new window
+        function contactWhatsApp(className, date, time) {
+            const encoded = 'NjE0MzE5NTU3ODc='; // Replace with your encoded number
+            const number = atob(encoded);
+            const message = `Hi! I'm interested in ${className} (${date} at ${time})`;
+            window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
+        }
     </script>
 </body>
 </html>
