@@ -367,6 +367,65 @@
         .social-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
         .social-whatsapp { background: #25d366; }
         
+        /* Testimonials */
+        .testimonials {
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .testimonials .section-title {
+            color: white;
+        }
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .testimonial-info h4 {
+            margin: 0;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 0.9em;
+        }
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        
         /* Footer */
         footer {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -540,6 +599,16 @@
                 bottom: 8px;
                 right: 8px;
             }
+            .testimonials {
+                padding: 30px 10px;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .testimonial-card {
+                padding: 15px;
+            }
         }ext-decoration: none;
             z-index: 1000;
         }
@@ -655,6 +724,61 @@
                 <i class="fas fa-heart"></i>
                 <h3>Holistic Approach</h3>
                 <p>Mind, body, and soul transformation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Members Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-info">
+                        <h4>Sarah Johnson</h4>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"The morning yoga classes have completely transformed my life. I feel more energized and focused throughout the day!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-info">
+                        <h4>Michael Chen</h4>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Best 1:1 fitness training I've ever had. Divya really understands individual needs and creates personalized programs."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">P</div>
+                    <div class="testimonial-info">
+                        <h4>Priya Sharma</h4>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"The meditation classes helped me manage stress and anxiety. Highly recommend to anyone looking for inner peace!"</p>
             </div>
         </div>
     </section>
