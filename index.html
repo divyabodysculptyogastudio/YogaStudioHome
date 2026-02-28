@@ -731,55 +731,14 @@
     <!-- Testimonials -->
     <section class="testimonials">
         <h2 class="section-title">What Our Members Say</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">S</div>
-                    <div class="testimonial-info">
-                        <h4>Sarah Johnson</h4>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"The morning yoga classes have completely transformed my life. I feel more energized and focused throughout the day!"</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">M</div>
-                    <div class="testimonial-info">
-                        <h4>Michael Chen</h4>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"Best 1:1 fitness training I've ever had. Divya really understands individual needs and creates personalized programs."</p>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-avatar">P</div>
-                    <div class="testimonial-info">
-                        <h4>Priya Sharma</h4>
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <p class="testimonial-text">"The meditation classes helped me manage stress and anxiety. Highly recommend to anyone looking for inner peace!"</p>
-            </div>
+        <div style="max-width: 800px; margin: 0 auto 30px; text-align: center;">
+            <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Share your experience with us!</p>
+            <a href="#" onclick="window.open('TESTIMONIAL_FORM_URL', '_blank'); return false;" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                <i class="fas fa-star"></i> Submit Your Review
+            </a>
+        </div>
+        <div id="testimonials-container" class="testimonials-grid">
+            <p style="color: white; text-align: center; grid-column: 1/-1;">Loading testimonials...</p>
         </div>
     </section>
 
@@ -804,6 +763,50 @@
             // Note: Display name/photo is controlled by WhatsApp Business account settings
             window.open(`https://wa.me/${number}?text=${encodeURIComponent(message)}`, '_blank');
         }
+        
+        // Load testimonials from Google Sheets
+        async function loadTestimonials() {
+            const SHEET_URL = 'SPREADSHEET_CSV_URL'; // Replace with your published CSV URL
+            
+            try {
+                const response = await fetch(SHEET_URL);
+                const text = await response.text();
+                const rows = text.split('\n').slice(1); // Skip header
+                
+                const container = document.getElementById('testimonials-container');
+                container.innerHTML = '';
+                
+                rows.slice(0, 6).forEach(row => {
+                    const [timestamp, name, rating, review] = row.split(',').map(s => s.trim().replace(/^"|"$/g, ''));
+                    if (!name || !review) return;
+                    
+                    const stars = '★'.repeat(parseInt(rating) || 5);
+                    const initial = name.charAt(0).toUpperCase();
+                    
+                    container.innerHTML += `
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">${initial}</div>
+                                <div class="testimonial-info">
+                                    <h4>${name}</h4>
+                                    <div class="testimonial-stars">${stars}</div>
+                                </div>
+                            </div>
+                            <p class="testimonial-text">"${review}"</p>
+                        </div>
+                    `;
+                });
+                
+                if (container.innerHTML === '') {
+                    container.innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
+                }
+            } catch (error) {
+                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">Reviews coming soon!</p>';
+            }
+        }
+        
+        // Load testimonials on page load
+        loadTestimonials();
         
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
