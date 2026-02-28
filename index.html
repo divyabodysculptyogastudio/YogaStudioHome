@@ -733,7 +733,7 @@
         <h2 class="section-title">What Our Members Say</h2>
         <div style="max-width: 800px; margin: 0 auto 30px; text-align: center;">
             <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Share your experience with us!</p>
-            <a href="#" onclick="window.open('TESTIMONIAL_FORM_URL', '_blank'); return false;" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+            <a href="#" onclick="window.open('https://docs.google.com/forms/d/1BgJtA4At4r-_1zK4YTxJXgjPP4blwZfiCCF1QUBv9cI/viewform', '_blank'); return false;" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
                 <i class="fas fa-star"></i> Submit Your Review
             </a>
         </div>
@@ -766,7 +766,7 @@
         
         // Load testimonials from Google Sheets
         async function loadTestimonials() {
-            const SHEET_URL = 'SPREADSHEET_CSV_URL'; // Replace with your published CSV URL
+            const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-GSH_HPh2owBPP7VaVOwVxTOz0tXIb0-bCAuikFbvwyF0PIRK8GyvPaNECvgIfr4Ep0Fco-qi1qtt/pub?output=csv';
             
             try {
                 const response = await fetch(SHEET_URL);
