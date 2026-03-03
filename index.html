@@ -831,7 +831,7 @@
                     return;
                 }
                 
-                reviews.slice(0, 6).forEach(({ name, rating, review }, index) => {
+                reviews.forEach(({ name, rating, review }, index) => {
                     const stars = '★'.repeat(parseInt(rating) || 5);
                     // Use same simple female silhouette for all
                     const avatarUrl = 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png';
