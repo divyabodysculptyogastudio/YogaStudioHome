@@ -376,18 +376,33 @@
             color: white;
         }
         .testimonials-grid {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 0 20px 20px;
+            scroll-behavior: smooth;
+        }
+        .testimonials-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        .testimonials-grid::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .testimonials-grid::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 10px;
         }
         .testimonial-card {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: all 0.3s;
+            min-width: 300px;
+            flex-shrink: 0;
         }
         .testimonial-card:hover {
             transform: translateY(-5px);
@@ -598,11 +613,12 @@
                 padding: 30px 10px;
             }
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                padding: 0 10px 15px;
                 gap: 15px;
             }
             .testimonial-card {
                 padding: 15px;
+                min-width: 250px;
             }
         }ext-decoration: none;
             z-index: 1000;
@@ -766,13 +782,23 @@
             try {
                 const response = await fetch(SHEET_URL);
                 const text = await response.text();
-                const rows = text.split('\n').slice(1); // Skip header
+                console.log('CSV Data:', text); // Debug log
+                const rows = text.split('\n').slice(1).filter(row => row.trim()); // Skip header and empty rows
                 
                 const container = document.getElementById('testimonials-container');
                 container.innerHTML = '';
                 
+                if (rows.length === 0) {
+                    container.innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
+                    return;
+                }
+                
                 rows.slice(0, 6).forEach((row, index) => {
-                    const [timestamp, name, rating, review] = row.split(',').map(s => s.trim().replace(/^"|"$/g, ''));
+                    // Handle CSV with commas in quotes
+                    const matches = row.match(/(?:"([^"]*)"|([^,]+))(?:,|$)/g);
+                    if (!matches || matches.length < 4) return;
+                    
+                    const [timestamp, name, rating, review] = matches.map(m => m.replace(/^"(.*)",$/, '$1').replace(/,$/, '').trim());
                     if (!name || !review) return;
                     
                     const stars = '★'.repeat(parseInt(rating) || 5);
@@ -791,12 +817,9 @@
                         </div>
                     `;
                 });
-                
-                if (container.innerHTML === '') {
-                    container.innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
-                }
             } catch (error) {
-                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">Reviews coming soon!</p>';
+                console.error('Error loading testimonials:', error);
+                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
             }
         }
         
