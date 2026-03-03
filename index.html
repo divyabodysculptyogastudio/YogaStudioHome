@@ -812,8 +812,8 @@
                 
                 reviews.slice(0, 6).forEach(({ name, rating, review }, index) => {
                     const stars = '★'.repeat(parseInt(rating) || 5);
-                    // Use DiceBear avatars - simple female avatars with no facial features
-                    const avatarUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}&backgroundColor=b6e3f4,c0aede,d1d4f9&hair=long01,long02,long03,long04,long05,long06&hairColor=4a312c,724133,a55728&top=longHair,longHairBigHair,longHairBob,longHairBun,longHairCurly,longHairCurvy,longHairDreads,longHairFrida,longHairFro,longHairFroBand,longHairNotTooLong,longHairShavedSides,longHairMiaWallace,longHairStraight,longHairStraight2,longHairStraightStrand&facialHair=blank&eyes=default&eyebrow=default&mouth=smile&accessories=blank&clothingGraphic=blank`;
+                    // Use simple female silhouette avatars - no facial features
+                    const avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(name)}&backgroundColor=ffd5dc,ffdfbf,c0aede,d1d4f9,b6e3f4&primaryColor=ff69b4,dda0dd,87ceeb`;
                     
                     container.innerHTML += `
                         <div class="testimonial-card">
