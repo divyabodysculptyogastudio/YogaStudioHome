@@ -782,27 +782,52 @@
             try {
                 const response = await fetch(SHEET_URL);
                 const text = await response.text();
-                console.log('CSV Data:', text); // Debug log
-                const rows = text.split('\n').slice(1).filter(row => row.trim()); // Skip header and empty rows
+                const lines = text.split('\n');
                 
                 const container = document.getElementById('testimonials-container');
                 container.innerHTML = '';
                 
-                if (rows.length === 0) {
-                    container.innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
+                // Parse CSV properly handling quotes
+                const reviews = [];
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (!line) continue;
+                    
+                    // Simple CSV parser for our format
+                    const parts = [];
+                    let current = '';
+                    let inQuotes = false;
+                    
+                    for (let j = 0; j < line.length; j++) {
+                        const char = line[j];
+                        if (char === '"') {
+                            inQuotes = !inQuotes;
+                        } else if (char === ',' && !inQuotes) {
+                            parts.push(current.trim());
+                            current = '';
+                        } else {
+                            current += char;
+                        }
+                    }
+                    parts.push(current.trim());
+                    
+                    if (parts.length >= 4) {
+                        const [timestamp, name, rating, review] = parts;
+                        if (name && review) {
+                            reviews.push({ name, rating, review });
+                        }
+                    }
+                }
+                
+                if (reviews.length === 0) {
+                    container.innerHTML = '<p style="color: white; text-align: center; width: 100%;">No reviews yet. Be the first to share your experience!</p>';
                     return;
                 }
                 
-                rows.slice(0, 6).forEach((row, index) => {
-                    // Handle CSV with commas in quotes
-                    const matches = row.match(/(?:"([^"]*)"|([^,]+))(?:,|$)/g);
-                    if (!matches || matches.length < 4) return;
-                    
-                    const [timestamp, name, rating, review] = matches.map(m => m.replace(/^"(.*)",$/, '$1').replace(/,$/, '').trim());
-                    if (!name || !review) return;
-                    
+                reviews.slice(0, 6).forEach(({ name, rating, review }, index) => {
                     const stars = '★'.repeat(parseInt(rating) || 5);
-                    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=100&background=random&color=fff&bold=true`;
+                    // Use DiceBear avatars - simple female avatars with no facial features
+                    const avatarUrl = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}&backgroundColor=b6e3f4,c0aede,d1d4f9&hair=long01,long02,long03,long04,long05,long06&hairColor=4a312c,724133,a55728&top=longHair,longHairBigHair,longHairBob,longHairBun,longHairCurly,longHairCurvy,longHairDreads,longHairFrida,longHairFro,longHairFroBand,longHairNotTooLong,longHairShavedSides,longHairMiaWallace,longHairStraight,longHairStraight2,longHairStraightStrand&facialHair=blank&eyes=default&eyebrow=default&mouth=smile&accessories=blank&clothingGraphic=blank`;
                     
                     container.innerHTML += `
                         <div class="testimonial-card">
@@ -819,7 +844,7 @@
                 });
             } catch (error) {
                 console.error('Error loading testimonials:', error);
-                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; grid-column: 1/-1;">No reviews yet. Be the first to share your experience!</p>';
+                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; width: 100%;">No reviews yet. Be the first to share your experience!</p>';
             }
         }
         
