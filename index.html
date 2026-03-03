@@ -727,15 +727,15 @@
 
     <!-- Testimonials -->
     <section class="testimonials">
-        <h2 class="section-title">What Our Members Say</h2>
-        <div style="max-width: 800px; margin: 0 auto 30px; text-align: center;">
+        <h2 class="section-title">Testimonials</h2>
+        <div id="testimonials-container" class="testimonials-grid">
+            <p style="color: white; text-align: center; grid-column: 1/-1;">Loading testimonials...</p>
+        </div>
+        <div style="max-width: 800px; margin: 30px auto 0; text-align: center;">
             <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Love our classes? Share your experience on Google!</p>
             <a href="https://g.page/r/Ca1omDTUMIr5EBM/review" target="_blank" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
                 <i class="fab fa-google"></i> Write a Google Review
             </a>
-        </div>
-        <div id="testimonials-container" class="testimonials-grid">
-            <p style="color: white; text-align: center; grid-column: 1/-1;">Loading testimonials...</p>
         </div>
     </section>
 
@@ -812,8 +812,8 @@
                 
                 reviews.slice(0, 6).forEach(({ name, rating, review }, index) => {
                     const stars = '★'.repeat(parseInt(rating) || 5);
-                    // Use simple female silhouette avatars - no facial features
-                    const avatarUrl = `https://api.dicebear.com/7.x/bottts-neutral/svg?seed=${encodeURIComponent(name)}&backgroundColor=ffd5dc,ffdfbf,c0aede,d1d4f9,b6e3f4&primaryColor=ff69b4,dda0dd,87ceeb`;
+                    // Use same simple female silhouette for all
+                    const avatarUrl = 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png';
                     
                     container.innerHTML += `
                         <div class="testimonial-card">
