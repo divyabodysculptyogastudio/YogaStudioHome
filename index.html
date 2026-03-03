@@ -403,13 +403,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5em;
-            font-weight: 600;
+            object-fit: cover;
+            border: 3px solid white;
         }
         .testimonial-info h4 {
             margin: 0;
@@ -732,9 +727,9 @@
     <section class="testimonials">
         <h2 class="section-title">What Our Members Say</h2>
         <div style="max-width: 800px; margin: 0 auto 30px; text-align: center;">
-            <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Share your experience with us!</p>
-            <a href="#" onclick="window.open('https://docs.google.com/forms/d/1BgJtA4At4r-_1zK4YTxJXgjPP4blwZfiCCF1QUBv9cI/viewform', '_blank'); return false;" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
-                <i class="fas fa-star"></i> Submit Your Review
+            <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Love our classes? Share your experience on Google!</p>
+            <a href="https://g.page/r/Ca1omDTUMIr5EBM/review" target="_blank" style="display: inline-block; padding: 12px 35px; background: white; color: #667eea; text-decoration: none; border-radius: 50px; font-size: 1em; font-weight: 600; box-shadow: 0 5px 20px rgba(0,0,0,0.2); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                <i class="fab fa-google"></i> Write a Google Review
             </a>
         </div>
         <div id="testimonials-container" class="testimonials-grid">
@@ -776,17 +771,17 @@
                 const container = document.getElementById('testimonials-container');
                 container.innerHTML = '';
                 
-                rows.slice(0, 6).forEach(row => {
+                rows.slice(0, 6).forEach((row, index) => {
                     const [timestamp, name, rating, review] = row.split(',').map(s => s.trim().replace(/^"|"$/g, ''));
                     if (!name || !review) return;
                     
                     const stars = '★'.repeat(parseInt(rating) || 5);
-                    const initial = name.charAt(0).toUpperCase();
+                    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=100&background=random&color=fff&bold=true`;
                     
                     container.innerHTML += `
                         <div class="testimonial-card">
                             <div class="testimonial-header">
-                                <div class="testimonial-avatar">${initial}</div>
+                                <img src="${avatarUrl}" alt="${name}" class="testimonial-avatar">
                                 <div class="testimonial-info">
                                     <h4>${name}</h4>
                                     <div class="testimonial-stars">${stars}</div>
