@@ -160,6 +160,16 @@
             padding: 0 20px 20px;
             scroll-behavior: smooth;
             scroll-snap-type: x mandatory;
+            animation: autoScroll 20s linear infinite;
+        }
+        
+        @keyframes autoScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .gallery-grid:hover {
+            animation-play-state: paused;
         }
         
         .gallery-grid::-webkit-scrollbar {
@@ -428,42 +438,6 @@
     <footer>
         <p>Divya BodySculpt YoGa Studio !!!</p>
     </footer>
-
-    <script>
-        // Auto-scroll gallery photos
-        const galleryGrid = document.querySelector('.gallery-grid');
-        let scrollAmount = 0;
-        const scrollSpeed = 1;
-        const scrollDelay = 3000; // Pause for 3 seconds at each photo
-        
-        function autoScroll() {
-            const maxScroll = galleryGrid.scrollWidth - galleryGrid.clientWidth;
-            
-            if (scrollAmount >= maxScroll) {
-                scrollAmount = 0;
-            } else {
-                scrollAmount += galleryGrid.clientWidth;
-            }
-            
-            galleryGrid.scrollTo({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        }
-        
-        // Start auto-scroll
-        let autoScrollInterval = setInterval(autoScroll, scrollDelay);
-        
-        // Pause auto-scroll on hover
-        galleryGrid.addEventListener('mouseenter', () => {
-            clearInterval(autoScrollInterval);
-        });
-        
-        // Resume auto-scroll when mouse leaves
-        galleryGrid.addEventListener('mouseleave', () => {
-            autoScrollInterval = setInterval(autoScroll, scrollDelay);
-        });
-    </script>
 
 </body>
 </html>
