@@ -143,6 +143,7 @@
         
         .gallery-section {
             margin-top: 50px;
+            overflow: hidden;
         }
         
         .section-title {
@@ -155,53 +156,24 @@
         
         .gallery-grid {
             display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            padding: 0 20px 20px;
-            scroll-behavior: smooth;
-            scroll-snap-type: x mandatory;
-            animation: autoScroll 20s linear infinite;
+            gap: 0;
+            animation: scroll 30s linear infinite;
         }
         
-        @keyframes autoScroll {
+        @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-50%); }
         }
         
         .gallery-grid:hover {
             animation-play-state: paused;
         }
         
-        .gallery-grid::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .gallery-grid::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        
-        .gallery-grid::-webkit-scrollbar-thumb {
-            background: rgba(102, 126, 234, 0.5);
-            border-radius: 10px;
-        }
-        
         .gallery-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s;
             flex-shrink: 0;
-            scroll-snap-align: start;
             height: 350px;
             display: flex;
             align-items: center;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
         .gallery-placeholder {
@@ -397,6 +369,22 @@
         <div class="gallery-section">
             <h2 class="section-title">Photo Gallery</h2>
             <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="photos/1.jpeg" alt="Studio Photo 1" style="height: 350px; width: auto; display: block;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/2.jpeg" alt="Studio Photo 2" style="height: 350px; width: auto; display: block;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/3.jpeg" alt="Studio Photo 3" style="height: 350px; width: auto; display: block;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/4.jpeg" alt="Studio Photo 4" style="height: 350px; width: auto; display: block;">
+                </div>
+                <div class="gallery-item">
+                    <img src="photos/5.jpeg" alt="Studio Photo 5" style="height: 350px; width: auto; display: block;">
+                </div>
+                <!-- Duplicate for seamless loop -->
                 <div class="gallery-item">
                     <img src="photos/1.jpeg" alt="Studio Photo 1" style="height: 350px; width: auto; display: block;">
                 </div>
