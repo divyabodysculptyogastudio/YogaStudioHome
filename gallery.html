@@ -429,5 +429,41 @@
         <p>Divya BodySculpt YoGa Studio !!!</p>
     </footer>
 
+    <script>
+        // Auto-scroll gallery photos
+        const galleryGrid = document.querySelector('.gallery-grid');
+        let scrollAmount = 0;
+        const scrollSpeed = 1;
+        const scrollDelay = 3000; // Pause for 3 seconds at each photo
+        
+        function autoScroll() {
+            const maxScroll = galleryGrid.scrollWidth - galleryGrid.clientWidth;
+            
+            if (scrollAmount >= maxScroll) {
+                scrollAmount = 0;
+            } else {
+                scrollAmount += galleryGrid.clientWidth;
+            }
+            
+            galleryGrid.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Start auto-scroll
+        let autoScrollInterval = setInterval(autoScroll, scrollDelay);
+        
+        // Pause auto-scroll on hover
+        galleryGrid.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+        
+        // Resume auto-scroll when mouse leaves
+        galleryGrid.addEventListener('mouseleave', () => {
+            autoScrollInterval = setInterval(autoScroll, scrollDelay);
+        });
+    </script>
+
 </body>
 </html>
