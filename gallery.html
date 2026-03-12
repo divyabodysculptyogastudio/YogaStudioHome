@@ -156,7 +156,7 @@
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
         
@@ -165,7 +165,7 @@
         }
         
         .gallery-item {
-            height: 300px;
+            width: 100%;
             overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -173,13 +173,13 @@
         
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform 0.3s;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
         
         .gallery-placeholder {
@@ -336,9 +336,7 @@
             .cta-section { padding: 40px 20px; }
             .gallery-grid {
                 grid-template-columns: 1fr;
-            }
-            .gallery-item {
-                height: 250px;
+                gap: 15px;
             }
         }
     </style>
