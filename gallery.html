@@ -155,14 +155,9 @@
         }
         
         .gallery-grid {
-            display: flex;
-            gap: 0;
-            animation: scroll 15s linear infinite;
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         
         .gallery-grid:hover {
@@ -170,10 +165,21 @@
         }
         
         .gallery-item {
-            flex-shrink: 0;
-            height: 350px;
-            display: flex;
-            align-items: center;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
         
         .gallery-placeholder {
@@ -316,11 +322,24 @@
         }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links { 
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            .nav-links a {
+                padding: 5px 10px;
+                font-size: 0.9em;
+            }
             .page-header h1 { font-size: 2em; }
             .social-connect { padding: 30px 20px; }
             .video-section { padding: 30px 20px; }
             .cta-section { padding: 40px 20px; }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -370,35 +389,19 @@
             <h2 class="section-title">Photo Gallery</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="photos/1.jpeg" alt="Studio Photo 1" style="height: 350px; width: auto; display: block;">
+                    <img src="photos/1.jpeg" alt="Studio Photo 1">
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/2.jpeg" alt="Studio Photo 2" style="height: 350px; width: auto; display: block;">
+                    <img src="photos/2.jpeg" alt="Studio Photo 2">
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/3.jpeg" alt="Studio Photo 3" style="height: 350px; width: auto; display: block;">
+                    <img src="photos/3.jpeg" alt="Studio Photo 3">
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/4.jpeg" alt="Studio Photo 4" style="height: 350px; width: auto; display: block;">
+                    <img src="photos/4.jpeg" alt="Studio Photo 4">
                 </div>
                 <div class="gallery-item">
-                    <img src="photos/5.jpeg" alt="Studio Photo 5" style="height: 350px; width: auto; display: block;">
-                </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="gallery-item">
-                    <img src="photos/1.jpeg" alt="Studio Photo 1" style="height: 350px; width: auto; display: block;">
-                </div>
-                <div class="gallery-item">
-                    <img src="photos/2.jpeg" alt="Studio Photo 2" style="height: 350px; width: auto; display: block;">
-                </div>
-                <div class="gallery-item">
-                    <img src="photos/3.jpeg" alt="Studio Photo 3" style="height: 350px; width: auto; display: block;">
-                </div>
-                <div class="gallery-item">
-                    <img src="photos/4.jpeg" alt="Studio Photo 4" style="height: 350px; width: auto; display: block;">
-                </div>
-                <div class="gallery-item">
-                    <img src="photos/5.jpeg" alt="Studio Photo 5" style="height: 350px; width: auto; display: block;">
+                    <img src="photos/5.jpeg" alt="Studio Photo 5">
                 </div>
             </div>
         </div>
