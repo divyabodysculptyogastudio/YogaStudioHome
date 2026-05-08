@@ -95,7 +95,7 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
-        .class-card:hover .class-description {
+        .class-card.active .class-description {
             opacity: 1;
             max-height: 200px;
         }
@@ -198,14 +198,17 @@
 
     <div class="container">
         <div class="classes-scroll">
-            <!-- 1:1 Fitness Class -->
-            <div class="class-card">
-                <div class="class-icon"><i class="fas fa-user"></i></div>
-                <div class="class-name">1:1 Fitness Class</div>
-                <div class="class-schedule">Flexible Schedule</div>
-                <div class="class-description">Personalized training tailored to your goals with one-on-one attention from certified trainer Divya.</div>
+            <!-- Friday Fitness -->
+            <div class="class-card" onclick="toggleCard(this)">
+                <div class="class-icon"><i class="fas fa-calendar-week"></i></div>
+                <div class="class-name">Friday Fitness</div>
+                <div class="class-schedule">Fridays | 7:45 PM – 8:45 PM</div>
+                <div class="class-description">
+                    📍 Manna Gum Community Centre<br><br>
+                    🗓️ Term wise – This Term Dates: Apr 24th – Jun 19th
+                </div>
                 <div class="btn-group">
-                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in 1:1 Fitness Class" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in Friday Fitness" class="btn btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i> Chat
                     </a>
                     <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn btn-book" target="_blank">
@@ -230,14 +233,30 @@
                 </div>
             </div>
 
-            <!-- Friday Fitness -->
+            <!-- Kids Classes -->
             <div class="class-card">
-                <div class="class-icon"><i class="fas fa-calendar-week"></i></div>
-                <div class="class-name">Friday Fitness</div>
-                <div class="class-schedule">Friday | Special Sessions</div>
-                <div class="class-description">Special weekend fitness classes combining cardio, strength training, and flexibility work.</div>
+                <div class="class-icon"><i class="fas fa-child"></i></div>
+                <div class="class-name">Kids Classes</div>
+                <div class="class-schedule">Weekends | Fun Sessions</div>
+                <div class="class-description">Fun and engaging yoga and fitness sessions designed for children, building strength, flexibility, and focus through play.</div>
                 <div class="btn-group">
-                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in Friday Fitness" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in Kids Classes" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat
+                    </a>
+                    <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn btn-book" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Book
+                    </a>
+                </div>
+            </div>
+
+            <!-- Senior Classes -->
+            <div class="class-card">
+                <div class="class-icon"><i class="fas fa-heart"></i></div>
+                <div class="class-name">Senior Classes</div>
+                <div class="class-schedule">Flexible Schedule</div>
+                <div class="class-description">Gentle yoga and low-impact fitness tailored for seniors, focusing on mobility, balance, and overall well-being.</div>
+                <div class="btn-group">
+                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in Senior Classes" class="btn btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i> Chat
                     </a>
                     <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn btn-book" target="_blank">
@@ -261,6 +280,22 @@
                     </a>
                 </div>
             </div>
+
+            <!-- 1:1 Fitness Class -->
+            <div class="class-card">
+                <div class="class-icon"><i class="fas fa-user"></i></div>
+                <div class="class-name">1:1 Fitness Class</div>
+                <div class="class-schedule">Flexible Schedule</div>
+                <div class="class-description">Personalized training tailored to your goals with one-on-one attention from certified trainer Divya.</div>
+                <div class="btn-group">
+                    <a href="https://wa.me/61466878493?text=Hi! I'm interested in 1:1 Fitness Class" class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Chat
+                    </a>
+                    <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn btn-book" target="_blank">
+                        <i class="fas fa-calendar-check"></i> Book
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -271,5 +306,10 @@
     <a href="https://wa.me/61466878493?text=Hi! I want to know more about your classes" class="floating-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+    <script>
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
