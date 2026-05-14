@@ -242,58 +242,69 @@
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
         .links-grid {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px 0 20px;
+            scroll-behavior: smooth;
         }
+        .links-grid::-webkit-scrollbar { height: 8px; }
+        .links-grid::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .links-grid::-webkit-scrollbar-thumb { background: #667eea; border-radius: 10px; }
         .link-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 25px 20px;
+            min-width: 260px;
+            background: white;
             border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
             text-align: center;
-            color: white;
             text-decoration: none;
-            transition: all 0.4s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        .link-card:hover::before {
-            left: 100%;
+            color: #333;
+            flex-shrink: 0;
         }
         .link-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
         .link-card i {
             font-size: 2.5em;
+            color: #667eea;
             margin-bottom: 15px;
-            animation: bounce 2s ease-in-out infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            display: block;
         }
         .link-card h3 {
-            font-size: 1em;
-            margin-bottom: 5px;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .link-card .class-schedule {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
         }
         .link-card p {
-            font-size: 0.75em;
-            opacity: 0.9;
+            font-size: 0.8em;
+            color: #888;
+            font-style: italic;
+            line-height: 1.4;
         }
+        .link-card .btn-book {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .link-card .btn-book:hover { transform: translateY(-2px); }
         
         /* Features Section */
         .features {
@@ -508,24 +519,19 @@
                 margin-bottom: 15px;
             }
             .links-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
+                gap: 12px;
+                padding: 5px 0 15px;
             }
             .link-card {
-                padding: 12px 8px;
+                min-width: 220px;
+                padding: 18px;
             }
             .link-card i {
-                font-size: 1.3em;
-                margin-bottom: 8px;
-                animation: none;
+                font-size: 1.8em;
+                margin-bottom: 10px;
             }
-            .link-card h3 {
-                font-size: 0.85em;
-                margin-bottom: 3px;
-            }
-            .link-card p {
-                font-size: 0.65em;
-            }
+            .link-card h3 { font-size: 1em; }
+            .link-card p { font-size: 0.75em; }
             .features {
                 padding: 20px 10px 25px;
             }
@@ -699,26 +705,48 @@
         </div>
         <h2 class="section-title" style="margin-top: 40px;">Our Classes</h2>
         <div class="links-grid">
-            <a href="one-on-one.html" class="link-card">
-                <i class="fas fa-user"></i>
-                <h3>1:1 Fitness Class</h3>
-                <p>Personalized training tailored to your goals</p>
-            </a>
-            <a href="morning-yoga.html" class="link-card">
-                <i class="fas fa-sun"></i>
-                <h3>Morning Yoga</h3>
-                <p>Start your day with energizing yoga sessions</p>
-            </a>
-            <a href="friday-fitness.html" class="link-card">
+            <div class="link-card">
                 <i class="fas fa-calendar-week"></i>
                 <h3>Friday Fitness</h3>
-                <p>Special weekend fitness classes</p>
-            </a>
-            <a href="meditation.html" class="link-card">
+                <div class="class-schedule">Fridays | 7:45 PM – 8:45 PM</div>
+                <p>Sweat, smile, repeat — your favourite way to end the week!</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-sun"></i>
+                <h3>Morning Yoga</h3>
+                <div class="class-schedule">Mon–Sat | 6:30–7:30 AM</div>
+                <p>Rise, breathe, and conquer — the perfect morning ritual.</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-child"></i>
+                <h3>Kids Classes</h3>
+                <div class="class-schedule">Weekends | Fun Sessions</div>
+                <p>Little movers, big energy — fitness that feels like play!</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-heart"></i>
+                <h3>Senior Classes</h3>
+                <div class="class-schedule">Flexible Schedule</div>
+                <p>Move with ease, live with grace — wellness at every age.</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
+            <div class="link-card">
                 <i class="fas fa-om"></i>
-                <h3>Meditation Classes</h3>
-                <p>Find inner peace and mental clarity</p>
-            </a>
+                <h3>Meditation Class</h3>
+                <div class="class-schedule">Multiple Sessions</div>
+                <p>Quiet the mind, awaken the soul — your peace starts here.</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-user"></i>
+                <h3>1:1 Fitness Class</h3>
+                <div class="class-schedule">Flexible Schedule</div>
+                <p>Your goals, your pace — 100% personalised just for you.</p>
+                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
+            </div>
         </div>
     </section>
 
@@ -753,7 +781,36 @@
     <section class="testimonials">
         <h2 class="section-title">Testimonials</h2>
         <div id="testimonials-container" class="testimonials-grid">
-            <p style="color: white; text-align: center; grid-column: 1/-1;">Loading testimonials...</p>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" alt="Ankita Panchal" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h4>Ankita Panchal</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"I absolutely love this yoga class! Divya is incredibly knowledgeable, motivating, and creates such a positive and welcoming environment for everyone. Every session is a perfect mix of yoga, asanas, meditation, cardio, strength training, and even dance, which makes the classes both enjoyable and energising. I always leave feeling refreshed, stronger, calmer, and happier. It's not just a workout — it's a complete mind and body experience. Highly recommend to anyone looking to improve their fitness, flexibility, mental wellbeing, and overall health! 😊"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" alt="Palak Bhatt" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h4>Palak Bhatt</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Very engaging and entertaining yoga classes. I will highly recommend this studio."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" alt="Keyuri Dandiya" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h4>Keyuri Dandiya</h4>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimonial-text">"Divya is very friendly, professional, and motivating. The yoga sessions are calm, well-guided, and perfect for improving flexibility and relaxation. The classes are energetic, fun, and full of positive energy. She explains movements clearly and makes everyone feel comfortable, regardless of fitness level. Highly recommended for anyone who looking to stay active and healthy."</p>
+            </div>
         </div>
         <div style="max-width: 800px; margin: 30px auto 0; text-align: center;">
             <p style="color: white; font-size: 1.1em; margin-bottom: 20px;">Love our classes? Share your experience on Google!</p>
@@ -795,7 +852,7 @@
                 const lines = text.split('\n');
                 
                 const container = document.getElementById('testimonials-container');
-                container.innerHTML = '';
+                // Don't clear — append after the hardcoded reviews
                 
                 // Parse CSV properly handling quotes
                 const reviews = [];
@@ -829,10 +886,7 @@
                     }
                 }
                 
-                if (reviews.length === 0) {
-                    container.innerHTML = '<p style="color: white; text-align: center; width: 100%;">No reviews yet. Be the first to share your experience!</p>';
-                    return;
-                }
+                if (reviews.length === 0) return;
                 
                 reviews.forEach(({ name, rating, review }, index) => {
                     const stars = '★'.repeat(parseInt(rating) || 5);
@@ -854,7 +908,6 @@
                 });
             } catch (error) {
                 console.error('Error loading testimonials:', error);
-                document.getElementById('testimonials-container').innerHTML = '<p style="color: white; text-align: center; width: 100%;">No reviews yet. Be the first to share your experience!</p>';
             }
         }
         
