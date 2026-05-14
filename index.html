@@ -241,18 +241,24 @@
             color: white;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
+        .links-grid-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
         .links-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: flex;
             gap: 20px;
-            overflow-x: auto;
             padding: 10px 0 20px;
-            scroll-behavior: smooth;
+            width: max-content;
+            animation: scrollLeft 20s linear infinite;
         }
-        .links-grid::-webkit-scrollbar { height: 8px; }
-        .links-grid::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .links-grid::-webkit-scrollbar-thumb { background: #667eea; border-radius: 10px; }
+        .links-grid-wrapper:hover .links-grid {
+            animation-play-state: paused;
+        }
+        @keyframes scrollLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
         .link-card {
             min-width: 260px;
             background: white;
@@ -523,7 +529,7 @@
                 padding: 5px 0 15px;
             }
             .link-card {
-                min-width: 220px;
+                min-width: 200px;
                 padding: 18px;
             }
             .link-card i {
@@ -704,49 +710,82 @@
             </a>
         </div>
         <h2 class="section-title" style="margin-top: 40px;">Our Classes</h2>
+        <div class="links-grid-wrapper">
         <div class="links-grid">
             <div class="link-card">
                 <i class="fas fa-calendar-week"></i>
                 <h3>Friday Fitness</h3>
                 <div class="class-schedule">Fridays | 7:45 PM – 8:45 PM</div>
                 <p>Sweat, smile, repeat — your favourite way to end the week!</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
             <div class="link-card">
                 <i class="fas fa-sun"></i>
                 <h3>Morning Yoga</h3>
                 <div class="class-schedule">Mon–Sat | 6:30–7:30 AM</div>
                 <p>Rise, breathe, and conquer — the perfect morning ritual.</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
             <div class="link-card">
                 <i class="fas fa-child"></i>
                 <h3>Kids Classes</h3>
                 <div class="class-schedule">Weekends | Fun Sessions</div>
                 <p>Little movers, big energy — fitness that feels like play!</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
             <div class="link-card">
                 <i class="fas fa-heart"></i>
                 <h3>Senior Classes</h3>
                 <div class="class-schedule">Flexible Schedule</div>
                 <p>Move with ease, live with grace — wellness at every age.</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
             <div class="link-card">
                 <i class="fas fa-om"></i>
                 <h3>Meditation Class</h3>
                 <div class="class-schedule">Multiple Sessions</div>
                 <p>Quiet the mind, awaken the soul — your peace starts here.</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
             <div class="link-card">
                 <i class="fas fa-user"></i>
                 <h3>1:1 Fitness Class</h3>
                 <div class="class-schedule">Flexible Schedule</div>
                 <p>Your goals, your pace — 100% personalised just for you.</p>
-                <a href="https://docs.google.com/forms/d/1HeeCAJMCa3kHiJ2XXypZQzZ3BprZOSlmFm4l4PZeEaI" class="btn-book" target="_blank"><i class="fas fa-calendar-check"></i> Book</a>
             </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="link-card">
+                <i class="fas fa-calendar-week"></i>
+                <h3>Friday Fitness</h3>
+                <div class="class-schedule">Fridays | 7:45 PM – 8:45 PM</div>
+                <p>Sweat, smile, repeat — your favourite way to end the week!</p>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-sun"></i>
+                <h3>Morning Yoga</h3>
+                <div class="class-schedule">Mon–Sat | 6:30–7:30 AM</div>
+                <p>Rise, breathe, and conquer — the perfect morning ritual.</p>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-child"></i>
+                <h3>Kids Classes</h3>
+                <div class="class-schedule">Weekends | Fun Sessions</div>
+                <p>Little movers, big energy — fitness that feels like play!</p>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-heart"></i>
+                <h3>Senior Classes</h3>
+                <div class="class-schedule">Flexible Schedule</div>
+                <p>Move with ease, live with grace — wellness at every age.</p>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-om"></i>
+                <h3>Meditation Class</h3>
+                <div class="class-schedule">Multiple Sessions</div>
+                <p>Quiet the mind, awaken the soul — your peace starts here.</p>
+            </div>
+            <div class="link-card">
+                <i class="fas fa-user"></i>
+                <h3>1:1 Fitness Class</h3>
+                <div class="class-schedule">Flexible Schedule</div>
+                <p>Your goals, your pace — 100% personalised just for you.</p>
+            </div>
+        </div>
         </div>
     </section>
 
